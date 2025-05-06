@@ -1,9 +1,0 @@
-{
-  "patient_identifier": "Smith, Jane - MRN67890",
-  "date_of_visit": "2025-05-01",
-  "medical_history_notes": "Diabetes, Hypertension",
-  "functioning_level_prior": "Independent with all ADLs",
-  "vital_temp_f": 98.6,
-  "vital_hr": 68,
-  "cardio_symptoms_dizziness": false
-}

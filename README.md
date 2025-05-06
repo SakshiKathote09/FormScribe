@@ -18,7 +18,8 @@ A flexible system for filling standardized forms based on JSON definitions and i
 
 Example:
 ```bash
-python3 adaptive_form_filler/src/main.py --form data/form_sn_visit.json --input data/sample_input_data.json
+python3 adaptive_form_filler/src/main.py --form test/data/form_pt_evaluation.json --input test/data/sample_input_data.json
+
 
 ```
 
