@@ -1,0 +1,107 @@
+{
+"form_id": "PT_EVAL",
+"form_name": "Physical Therapy Evaluation",
+"fields": [
+{
+"id": "patient_name",
+"name": "Patient Name",
+"type": "string",
+"required": true
+},
+{
+"id": "visit_date",
+"name": "Visit Date",
+"type": "string",
+"format": "YYYY-MM-DD",
+"required": true
+},
+{
+"id": "homebound_status",
+"name": "Homebound Status",
+"type": "object",
+"required": true,
+"properties": [
+{
+"id": "criteria_one_met",
+"name": "Criteria One Met",
+"type": "boolean",
+
+"required": true,
+"rules": ["must_be_true"]
+},
+{
+"id": "criteria_one_details",
+"name": "Criteria One Details",
+"type": "string",
+"required": true
+},
+{
+"id": "criteria_two_met",
+"name": "Criteria Two Met",
+"type": "boolean",
+"required": true,
+"rules": ["must_be_true"]
+},
+{
+"id": "criteria_two_details",
+"name": "Criteria Two Details",
+"type": "string",
+"required": true
+}
+]
+},
+{
+"id": "relevant_medical_history",
+"name": "Relevant Medical History",
+"type": "string",
+"required": true
+},
+{
+"id": "prior_level_of_function",
+"name": "Prior Level of Function",
+"type": "string",
+"required": true
+},
+{
+"id": "cardiovascular_eval",
+"name": "Cardiovascular Assessment (Eval)",
+"type": "object",
+"required": false,
+"properties": [
+{
+"id": "wnl",
+"name": "Within Normal Limits",
+"type": "boolean",
+"required": false
+},
+{
+"id": "chest_pain_present",
+"name": "Chest Pain Present",
+"type": "boolean",
+"required": false,
+"condition": { "field": "wnl", "is": false }
+},
+{
+"id": "edema_observed",
+"name": "Edema Observed",
+"type": "boolean",
+"required": false,
+"condition": { "field": "wnl", "is": false }
+},
+{
+"id": "edema_location",
+"name": "Edema Location(s)",
+"type": "string",
+"required": true,
+"condition": { "field": "edema_observed", "is": true }
+},
+{
+"id": "eval_comments",
+"name": "Cardio Eval Comments",
+"type": "string",
+"required": false
+}
+]
+}
+]
+}

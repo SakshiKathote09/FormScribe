@@ -1,0 +1,97 @@
+{
+    "form_id": "PT_VISIT",
+    "form_name": "Physical Therapy Visit",
+    
+    "fields": [
+    {
+    "id": "patient_name",
+    "name": "Patient Name",
+    "type": "string",
+    "required": true
+    },
+    {
+    "id": "visit_date",
+    "name": "Visit Date",
+    "type": "string",
+    "format": "YYYY-MM-DD",
+    "required": true
+    },
+    {
+    "id": "homebound_status",
+    "name": "Homebound Status",
+    "type": "object",
+    "required": true,
+    "properties": [
+    { "id": "criteria_one_met", "name": "Criteria One Met", "type":
+    "boolean", "required": true, "rules": ["must_be_true"] },
+    { "id": "criteria_one_details", "name": "Criteria One Details",
+    "type": "string", "required": true },
+    { "id": "criteria_two_met", "name": "Criteria Two Met", "type":
+    "boolean", "required": true, "rules": ["must_be_true"] },
+    { "id": "criteria_two_details", "name": "Criteria Two Details",
+    "type": "string", "required": true }
+    ]
+    },
+    {
+    "id": "exercises_performed",
+    "name": "Exercises Performed",
+    "type": "array",
+    "required": true,
+    "item_type": {
+    "type": "object",
+    "properties": [
+    { "id": "exercise_name", "name": "Exercise Name", "type": "string",
+    "required": true },
+    { "id": "sets", "name": "Sets", "type": "integer", "required": false
+    },
+    { "id": "reps", "name": "Reps", "type": "integer", "required": false
+    },
+    
+    { "id": "notes", "name": "Notes/Tolerance", "type": "string",
+    "required": false }
+    ]
+    }
+    },
+    {
+    "id": "vitals_pt",
+    "name": "Vital Signs (PT Visit Style)",
+    "type": "object",
+    "required": true,
+    "properties": [
+    {
+    "id": "hr_prior", "name": "Heart Rate (Prior)", "type": "integer",
+    "required": false
+    },
+    {
+    "id": "hr_during", "name": "Heart Rate (During)", "type": "integer",
+    "required": false
+    },
+    {
+    "id": "hr_post", "name": "Heart Rate (Post)", "type": "integer",
+    "required": false
+    },
+    {
+    "id": "bp_prior", "name": "Blood Pressure (Prior)", "type": "string",
+    "format": "SYS/DIA", "required": false
+    },
+    {
+    "id": "bp_prior_position", "name": "BP Position (Prior)", "type":
+    "enum", "values": ["Lying", "Sitting", "Standing"], "required": false
+    },
+    {
+    "id": "o2_sat_prior", "name": "O2 Saturation % (Prior)", "type":
+    "integer", "required": false
+    },
+    {
+    "id": "o2_sat_setting", "name": "O2 Setting (Prior)", "type": "enum",
+    "values": ["Room Air", "O2 via NC", "O2 via Mask"], "required": false
+    },
+    {
+    "id": "pt_vitals_comments", "name": "PT Vitals Comments", "type":
+    "string", "required": false
+    }
+    ]
+
+    }
+    ]
+    }

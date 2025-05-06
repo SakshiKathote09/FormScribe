@@ -1,0 +1,129 @@
+{
+    "form_id": "SN_VISIT",
+    "form_name": "Skilled Nursing Visit",
+    "fields": [
+    {
+    "id": "patient_name",
+    "name": "Patient Name",
+    "type": "string",
+    "required": true
+    },
+    {
+    "id": "visit_date",
+    "name": "Visit Date",
+    "type": "string",
+    "format": "YYYY-MM-DD",
+    "required": true
+    },
+    {
+    "id": "vitals_sn",
+    "name": "Vital Signs (SN Style)",
+    "type": "object",
+    "required": true,
+    "properties": [
+    {
+    "id": "temperature_f", "name": "Temperature (F)", "type": "float",
+    "required": false
+    },
+    {
+    "id": "temp_method", "name": "Temperature Method", "type": "enum",
+    "values": ["Oral", "Axillary", "Tympanic", "Temporal"], "required": false
+    },
+    {
+    "id": "pulse_rate", "name": "Pulse Rate", "type": "integer",
+    "required": false
+    },
+    
+    {
+    "id": "pulse_regularity", "name": "Pulse Regularity", "type":
+    "enum", "values": ["Regular", "Irregular"], "required": false
+    },
+    {
+    "id": "pulse_site", "name": "Pulse Site", "type": "enum", "values":
+    ["Radial", "Apical"], "required": false
+    },
+    {
+    "id": "respiration_rate", "name": "Respiration Rate", "type":
+    "integer", "required": false
+    },
+    {
+    "id": "blood_pressure", "name": "Blood Pressure", "type": "string",
+    "format": "SYS/DIA", "required": false
+    },
+    {
+    "id": "bp_position", "name": "BP Position", "type": "enum",
+    "values": ["Lying", "Sitting", "Standing"], "required": false
+    },
+    {
+    "id": "blood_sugar_mgdl", "name": "Blood Sugar (mg/dL)", "type":
+    "integer", "required": false
+    },
+    {
+    "id": "blood_sugar_type", "name": "Blood Sugar Type", "type":
+    "enum", "values": ["Fasting", "Random", "Post-Prandial"], "required": false,
+    "condition": { "field": "blood_sugar_mgdl", "is_not": null }
+    },
+    {
+    "id": "sn_vitals_comments", "name": "SN Vitals Comments", "type":
+    "string", "required": false
+    }
+    ]
+    },
+    {
+    "id": "cardiovascular_sn",
+    "name": "Cardiovascular Assessment (SN)",
+    "type": "object",
+    "required": true,
+    "properties": [
+    {
+    "id": "wnl",
+    "name": "Within Normal Limits",
+    
+    "type": "boolean",
+    "required": false
+    },
+    {
+    "id": "dizziness",
+    "name": "Dizziness Assessment",
+    "type": "object",
+    "required": false,
+    "condition": { "field": "wnl", "is": false },
+    "properties": [
+    { "id": "is_present", "name": "Dizziness Present", "type":
+    "boolean", "required": true },
+    { "id": "details", "name": "Dizziness Details", "type": "string",
+    "required": true, "condition": {"field": "is_present", "is": true}}
+    ]
+    },
+    {
+    "id": "heart_sounds_abnormal",
+    "name": "Abnormal Heart Sounds",
+    "type": "array",
+    "required": false,
+    "condition": { "field": "wnl", "is": false },
+    "item_type": { "type": "enum", "values": ["Murmur", "Gallop",
+    "Click", "Irregular Rhythm"] }
+    },
+    {
+    "id": "pacemaker_insertion_date",
+    "name": "Pacemaker Insertion Date",
+    "type": "string",
+    "format": "YYYY-MM-DD",
+    "required": false
+    },
+    {
+    "id": "sn_cardio_comments",
+    "name": "SN Cardio Comments",
+    "type": "string",
+    "required": false
+    }
+    ]
+    },
+    {
+    "id": "precautions_maintained",
+    "name": "Standard Precautions Maintained",
+    "type": "boolean",
+    "required": false
+    }
+    ]
+    }
