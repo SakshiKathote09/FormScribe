@@ -61,3 +61,4 @@ The design is extensible in several ways:
 3. When a field is marked as required, its absence should raise an error rather than produce a partial result
 4. Enum values in the form definitions are treated as strings for validation purposes
 5. The system focuses on data validation and transformation rather than UI rendering
+
