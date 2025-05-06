@@ -19,9 +19,15 @@ A flexible system for filling standardized forms based on JSON definitions and i
 Example:
 ```bash
 python3 adaptive_form_filler/src/main.py --form test/data/form_pt_evaluation.json --input test/data/sample_input_data.json
-
-
 ```
+
+## How to Run Tests
+
+```bash
+python3 test/test_form_filler.py
+```
+
+### You can quickly review run results in example_runs for sample cases. stdout is enabled for cli runs.
 
 ## Design Approach
 
