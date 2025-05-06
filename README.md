@@ -19,9 +19,15 @@ A flexible system for filling standardized forms based on JSON definitions and i
 Example:
 ```bash
 python3 adaptive_form_filler/src/main.py --form test/data/form_pt_evaluation.json --input test/data/sample_input_data.json
-
-
 ```
+
+## How to Run Tests
+
+```bash
+python3 test/test_form_filler.py
+```
+
+### You can quickly review run results in example_runs for sample cases. stdout is enabled for cli runs.
 
 ## Design Approach
 
@@ -62,3 +68,50 @@ The design is extensible in several ways:
 4. Enum values in the form definitions are treated as strings for validation purposes
 5. The system focuses on data validation and transformation rather than UI rendering
 
+## 💡 Design Overview
+
+### Core Components
+
+1. **FieldDefinition**  
+   Represents a field and its metadata including:
+   - ID, type, format
+   - Visibility/requirement conditions
+   - Nested structure for arrays/objects
+   - Rules like `must_be_true`, enum validation, transformations
+
+2. **FormDefinition**  
+   Loads and manages the overall form schema composed of fields.
+
+3. **FormFiller**  
+   The core engine:
+   - Processes input data
+   - Validates and transforms fields
+   - Handles nested structures (objects and arrays)
+   - Injects aliases and custom logic
+
+
+## 🔍 Key Features
+
+- ✅ **Strong Type Validation** for string, date, enum, int, float, boolean
+- 🧠 **Conditional Fields** (`required_if`, `visible_if`)
+- 🔁 **Nested Support** for objects and arrays
+- 🔄 **Value Transformations** (`transform_map`, ISO date, etc.)
+- 🏷️ **Alias Mapping** with static or lambda-based value injection
+- 🚨 **Error Collection** instead of hard failure
+- 📋 **Modular Structure** for extensibility
+
+
+## 🔐 Error Handling
+
+- `MissingFieldError`: Required field missing
+- `InvalidFieldError`: Field exists but of invalid type/format
+- `FormFillerError`: Rule violations (e.g. `must_be_true`)
+- Centralized error collection per field with traceable context
+
+## 🔄 Transform & Alias Map Examples
+
+Example mappings:
+- `patient_name` ← `patient_identifier`
+- `homebound_status` ← computed from four fields
+- `exercises_performed` ← transformed from `activities_performed`
+- `vitals_pt` ← structured vitals mapping from flat input
